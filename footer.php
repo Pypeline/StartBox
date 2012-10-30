@@ -11,7 +11,6 @@
 		<?php
 			do_action( 'footer_widgets' );
 			do_action( 'footer' );
-
 			if ( has_action( 'wp_footer' ) ) {
 				echo '<div id="wp_footer">';
 				wp_footer();
