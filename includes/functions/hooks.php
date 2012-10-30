@@ -8,6 +8,72 @@
  * @subpackage Functions
  */
 
+
+/**
+ * Map one action to another
+ * @param  string $action_to_map  The name of the action you wish to map
+ * @param  string $to_this_action Where to attach the action
+ * @param  int    $priority       Numerical priority of when to fire the mapped actions
+ * @param  int    $accepted_args  Number of args to pass
+ * @return bool                   Always true
+ */
+// Example: map_action( 'sb_header', 'tha_header' );
+if ( ! function_exists( 'map_action' ) ) {
+function map_action( $action_to_map, $to_this_action, $priority, $accepted_args ) {
+
+	return add_action_with_args( $to_this_action, 'do_action', $priority, $action_to_map );
+
+}
+}
+
+/**
+ * @param string $tag
+ * @param callback $callback
+ * @param int $priority
+ * @param null $args one or more arguments to pass to hooked function.
+ *
+ * @return bool
+ */
+if ( ! function_exists( 'add_action_with_args' ) ) {
+function add_action_with_args( $tag, $callback, $priority = 10, $args = null ) {
+
+	// Accept as many different args as we're passed
+	$args = array_slice(func_get_args(), 3);
+
+	return add_action( $tag, array( new Add_Action_Handler( $args, $callback ), 'action' ), $priority, 1 );
+}
+}
+
+/**
+ * Helper class for add_action_with_args()
+ *
+ * @param array $args 		Arguments to pass through to a given callback
+ * @param string $callback  The callback to run
+ */
+if ( ! class_exists( 'Add_Action_Handler' ) ) {
+class Add_Action_Handler {
+
+	private $args;
+	private $callback;
+
+	function __construct($args, $callback = null) {
+
+		$this->args = $args;
+		$this->callback = $callback;
+	}
+
+	function action() {
+
+		call_user_func_array($this->args, $this->callback);
+
+		if( func_num_args() )
+			return func_get_arg(0);
+
+		return null;
+	}
+}
+}
+
 ////////////////////////////////////////////////// Body, Post and Comment class filters //////////////////////////////////////////////////
 
 // Filter body_class to include user browser, category, and date classes
@@ -93,13 +159,13 @@ function sb_date_classes($t, &$classes, $p) {
 
 // Header Wrap
 function sb_header_wrap() {
-	if ( !did_action( 'sb_header') )
+	if ( !did_action( 'header') )
 		echo '<div id="header_wrap">'."\n";
 	else
 		echo '</div><!-- #header_wrap -->'."\n";
 }
-add_action( 'sb_before_header', 'sb_header_wrap', 999 );
-add_action( 'sb_after_header', 'sb_header_wrap', 9 );
+add_action( 'before_header', 'sb_header_wrap', 999 );
+add_action( 'after_header', 'sb_header_wrap', 9 );
 
 // The default site title
 function sb_default_title( $title, $sep, $seplocation) {
@@ -167,7 +233,7 @@ add_action('sb_before','sb_skip_to_content');
 function sb_breadcrumb_output() {
 	if ( function_exists( 'yoast_breadcrumb' ) ) { yoast_breadcrumb('<div id="yoastbreadcrumb">','</div>'); }
 }
-add_action( 'sb_before_content', 'sb_breadcrumb_output', 15 );
+add_action( 'before_content', 'sb_breadcrumb_output', 15 );
 
 
 ////////////////////////////////////////////////// Items To Hook into home page //////////////////////////////////////////////////
@@ -256,7 +322,7 @@ function sb_default_page_title() {
 
 	echo apply_filters('sb_default_page_title', $content, $container, $post );
 }
-add_action( 'sb_page_title', 'sb_default_page_title' );
+add_action( 'page_title', 'sb_default_page_title' );
 
 // Hook archive meta after page title for archive pages
 function sb_archive_meta() {
@@ -268,7 +334,7 @@ function sb_archive_meta() {
 		echo $content;
 	}
 }
-add_action( 'sb_page_title', 'sb_archive_meta' );
+add_action( 'page_title', 'sb_archive_meta' );
 
 // Add content filters for the description/meta content
 add_filter( 'archive_meta', 'wptexturize' );
@@ -283,13 +349,13 @@ function sb_404_content() {
 	echo '<br/>';
 	sb_sitemap();
 }
-add_action( 'sb_404', 'sb_404_content' );
+add_action( '404', 'sb_404_content' );
 
 // Dynamically create hook for the very first post in a loop
 function sb_before_first_post() { global $firstpost; if ( !isset( $firstpost ) ) { do_action('sb_before_first_post'); } } // Just before the post
 function sb_after_first_post() { global $firstpost; if ( !isset( $firstpost ) ) { do_action('sb_after_first_post'); $firstpost = 1; } } // Just after the post
-add_action( 'sb_before_post', 'sb_before_first_post' );
-add_action( 'sb_after_post', 'sb_after_first_post' );
+add_action( 'before_post', 'sb_before_first_post' );
+add_action( 'after_post', 'sb_after_first_post' );
 
 ////////////////////////////////////////////////// Items To Hook into Footer //////////////////////////////////////////////////
 
@@ -297,7 +363,7 @@ add_action( 'sb_after_post', 'sb_after_first_post' );
 function sb_footer_widgets() {
 	get_sidebar('footer');
 }
-add_action( 'sb_footer_widgets', 'sb_footer_widgets' );
+add_action( 'footer_widgets', 'sb_footer_widgets' );
 
 // Auto-hide the address bar in mobile Safari (iPhone)
 function sb_iphone() { echo '<script type="text/javascript">window.scrollTo(0, 1);</script>'; }
@@ -305,7 +371,7 @@ add_action('sb_after','sb_iphone');
 
 // Add left/right footer hooks
 function sb_footer_left_right() {
-	if ( has_action( 'sb_footer_left' ) ) { echo '<div id="footer_left" class="left">'; do_action( 'sb_footer_left' ); echo '</div><!-- #footer_left -->'; }
-	if ( has_action( 'sb_footer_right' ) ) { echo '<div id="footer_right" class="right">'; do_action( 'sb_footer_right' ); echo '</div><!-- #footer_right -->'; }
+	if ( has_action( 'footer_left' ) ) { echo '<div id="footer_left" class="left">'; do_action( 'footer_left' ); echo '</div><!-- #footer_left -->'; }
+	if ( has_action( 'footer_right' ) ) { echo '<div id="footer_right" class="right">'; do_action( 'footer_right' ); echo '</div><!-- #footer_right -->'; }
 }
-add_action( 'sb_footer', 'sb_footer_left_right', 15 );
+add_action( 'footer', 'sb_footer_left_right', 15 );

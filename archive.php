@@ -4,9 +4,9 @@
 		<div id="content">
 
 			<?php
-				do_action( 'sb_before_content' );
+				do_action( 'before_content' );
 				the_post();
-				do_action( 'sb_page_title' );
+				do_action( 'page_title' );
 				rewind_posts();
 
 				while ( have_posts() ) : the_post();
@@ -15,7 +15,7 @@
 
 				endwhile;
 
-				do_action( 'sb_after_content' );
+				do_action( 'after_content' );
 			?>
 
 		</div><!-- #content .hfeed -->

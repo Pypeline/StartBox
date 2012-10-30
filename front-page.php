@@ -4,12 +4,12 @@
 		<div id="content">
 
 			<?php
-				do_action( 'sb_before_content' );
-				do_action( 'sb_before_featured' );
-				do_action( 'sb_featured' );
-				do_action( 'sb_after_featured' );
-				do_action( 'sb_home' );
-				do_action( 'sb_after_content' );
+				do_action( 'before_content' );
+				do_action( 'before_featured' );
+				do_action( 'featured' );
+				do_action( 'after_featured' );
+				do_action( 'home' );
+				do_action( 'after_content' );
 			?>
 
 		</div><!-- #content -->

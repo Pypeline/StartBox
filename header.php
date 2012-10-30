@@ -16,18 +16,18 @@
 </head>
 
 <body <?php body_class(); ?>>
-<?php do_action( 'sb_before' ); ?>
+<?php do_action( 'before' ); ?>
 <div id="wrap" class="hfeed">
 
-	<?php do_action( 'sb_before_header' ); ?>
+	<?php do_action( 'before_header' ); ?>
 
-	<?php if ( has_action( 'sb_header' ) ) { ?>
+	<?php if ( has_action( 'header' ) ) { ?>
 		<header id="header" class="site-header" role="banner">
-			<?php do_action( 'sb_header' ); ?>
+			<?php do_action( 'header' ); ?>
 		</header><!-- #header .site-header -->
 	<?php } ?>
 
-	<?php do_action( 'sb_after_header' ); ?>
+	<?php do_action( 'after_header' ); ?>
 
 	<div id="container_wrap">
-		<?php do_action( 'sb_before_container' ); ?>
+		<?php do_action( 'before_container' ); ?>

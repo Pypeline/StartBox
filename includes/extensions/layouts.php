@@ -248,7 +248,7 @@ function sb_layouts_term_meta_save($term_id, $tt_id, $taxonomy) {
 	update_option( 'startbox_termmeta', $term_meta );
 
 }
-add_action('edit_term', 'sb_layouts_term_meta_save', 10, 3);
+add_action( 'edit_term', 'sb_layouts_term_meta_save', 10, 3 );
 
 /**
  * Delete the taxonomy layout meta when the taxonomy is deleted (hat tip to Nathan Rice of Genesis! and Joost DeValk)
@@ -267,7 +267,7 @@ function sb_layouts_term_meta_delete($term_id, $tt_id, $taxonomy) {
 	update_option( 'startbox_termmeta', (array) $term_meta );
 
 }
-add_action('delete_term', 'sb_layouts_term_meta_delete', 10, 3);
+add_action( 'delete_term', 'sb_layouts_term_meta_delete', 10, 3 );
 
 /**
  * Filter get_term to attach the layout meta to each taxonomy (hat tip to Nathan Rice of Genesis! and Joost DeValk)
@@ -296,4 +296,4 @@ function sb_layouts_term_meta_filter($term, $taxonomy) {
 	return $term;
 
 }
-add_filter('get_term', 'sb_layouts_term_meta_filter', 10, 2);
+add_filter( 'get_term', 'sb_layouts_term_meta_filter', 10, 2 );

@@ -49,7 +49,7 @@ function sb_sidebars_init() {
 		'register_meta_box_cb' 	=> 'sb_sidebars_setup' ));
 
 }
-add_action( 'init', 'sb_sidebars_init' );
+add_action( 'init', 'sidebars_init' );
 
 
 /**

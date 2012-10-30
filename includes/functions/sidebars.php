@@ -25,7 +25,7 @@ class SB_Sidebars {
 		add_action( 'widgets_init', array( $this, 'widgets_init' ) );
 
 		// Hook for other functions
-		do_action( 'sb_sidebars_init' );
+		do_action( 'sidebars_init' );
 
 	}
 

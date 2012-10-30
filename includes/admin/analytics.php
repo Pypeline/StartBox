@@ -34,7 +34,7 @@ class sb_analytics_settings extends sb_settings {
 	}
 
 	function hooks() {
-		add_action('wp_head', array( $this, 'output' ) );
+		add_action('wp_head', array( $this, 'output' ), 0 );
 	}
 
 }

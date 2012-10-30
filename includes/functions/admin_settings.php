@@ -644,10 +644,10 @@ class sb_input {
 
 		// Position Options
 		if ( !$position ) $position = apply_filters( "sb_{$id}_positions", array(
-			'sb_before'		=> __( 'Top of Page', 'startbox' ),
-			'sb_before_header'	=> __( 'Before Header', 'startbox' ),
-			'sb_header'		=> __( 'Inside Header', 'startbox' ),
-			'sb_after_header'	=> __( 'After Header', 'startbox' )
+			'before'		=> __( 'Top of Page', 'startbox' ),
+			'before_header'	=> __( 'Before Header', 'startbox' ),
+			'header'		=> __( 'Inside Header', 'startbox' ),
+			'after_header'	=> __( 'After Header', 'startbox' )
 		));
 		$output .= sb_input::select( array( 'id' => $id . '-position', 'label' => $label . ' ' . __( 'Position', 'startbox' ), 'value' => sb_get_option( $id . '-position' ), 'options' => $position, 'size' => $size, 'align' => $align ) );
 

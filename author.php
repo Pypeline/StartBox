@@ -5,7 +5,7 @@
 
 		<?php the_post(); ?>
 
-		<?php do_action( 'sb_before_content' ); ?>
+		<?php do_action( 'before_content' ); ?>
 
 			<div id="entry-author-info">
 				<?php sb_page_title(); ?>
@@ -21,14 +21,14 @@
 
 			<?php
 				// Provide a hook for placing content before author posts
-				do_action( 'sb_author_before_posts' );
+				do_action( 'author_before_posts' );
 
 				// Grab the author's posts
 				rewind_posts();
 				get_template_part( 'loop', 'author' );
 
 				// Standard "after content" hook
-				do_action( 'sb_after_content' );
+				do_action( 'after_content' );
 			?>
 
 		</div><!-- #content -->
