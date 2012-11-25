@@ -77,7 +77,7 @@ class Add_Action_Handler {
 ////////////////////////////////////////////////// Body, Post and Comment class filters //////////////////////////////////////////////////
 
 // Filter body_class to include user browser, category, and date classes
-function sb_body_classes($classes) {
+function sb_body_classes( $classes ) {
 	global $wp_query;
 
 	// Determine user's browser and adds appropriate class
@@ -131,21 +131,21 @@ function sb_body_classes($classes) {
 	// return the $classes array
 	return $classes;
 }
-add_filter('body_class','sb_body_classes');
+add_filter( 'body_class','sb_body_classes' );
 
 
 // Filter post_class to include an author class
-function sb_post_classes($classes) {
+function sb_post_classes( $classes ) {
 	// Author for the post queried
 	$classes[] = 'author-' . sanitize_title_with_dashes( strtolower( get_the_author() ) );
 
 	// return the $classes array
 	return $classes;
 }
-add_filter('post_class','sb_post_classes');
+add_filter( 'post_class','sb_post_classes' );
 
 
-// Generates time- and date-based classes relative to GMT (UTC)
+// Helper function for generating time- and date-based classes relative to GMT (UTC)
 function sb_date_classes($t, &$classes, $p) {
 	$t = $t + ( get_option('gmt_offset') * 3600 );
 	$classes[] = $p . 'y' . gmdate( 'Y', $t ); // Year
@@ -221,13 +221,13 @@ add_action( 'wp_enqueue_scripts', 'sb_default_stylesheet', 15 );
 function sb_topofpage() {
 	echo '<a name="top"></a>'."\n";
 }
-add_action('sb_before', 'sb_topofpage', 1);
+add_action( 'before', 'sb_topofpage', 1 );
 
 // Insert skip-to-content link for screen reader users
 function sb_skip_to_content() {
 	echo '<a href="#content" title="Skip to content" class="skip-to-content">' . __( 'Skip to content', 'startbox' ) . '</a>'."\n";
 }
-add_action('sb_before','sb_skip_to_content');
+add_action( 'before','sb_skip_to_content' );
 
 // Insert Yoast Breadcrumbs if Active
 function sb_breadcrumb_output() {
@@ -242,7 +242,7 @@ add_action( 'before_content', 'sb_breadcrumb_output', 15 );
 function sb_home_featured_sidebar() {
 	sb_do_sidebar( 'featured_aside', 'home_featured', 'featured-aside' );
 }
-add_action('sb_featured','sb_home_featured_sidebar');
+add_action( 'featured','sb_home_featured_sidebar' );
 
 // Hook standard content if front-page is a static page, or a standard loop if using blog posts
 function sb_home_content() {
@@ -265,7 +265,7 @@ function sb_home_content() {
 		}
 	endwhile;
 }
-add_action('sb_home','sb_home_content');
+add_action( 'home','sb_home_content' );
 
 ////////////////////////////////////////////////// Items To Hook into content areas //////////////////////////////////////////////////
 
@@ -367,7 +367,7 @@ add_action( 'footer_widgets', 'sb_footer_widgets' );
 
 // Auto-hide the address bar in mobile Safari (iPhone)
 function sb_iphone() { echo '<script type="text/javascript">window.scrollTo(0, 1);</script>'; }
-add_action('sb_after','sb_iphone');
+add_action( 'after','sb_iphone' );
 
 // Add left/right footer hooks
 function sb_footer_left_right() {

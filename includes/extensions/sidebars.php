@@ -46,7 +46,7 @@ function sb_sidebars_init() {
 		'show_in_menu'			=> 'themes.php',
 		'capability_type'		=> 'post',
 		'show_in_nav_menus' 	=> false,
-		'register_meta_box_cb' 	=> 'sb_sidebars_setup' ));
+		'register_meta_box_cb' 	=> 'sb_sidebars_setup' ) );
 
 }
 add_action( 'init', 'sidebars_init' );
