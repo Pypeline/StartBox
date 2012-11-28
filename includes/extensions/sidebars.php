@@ -49,7 +49,7 @@ function sb_sidebars_init() {
 		'register_meta_box_cb' 	=> 'sb_sidebars_setup' ) );
 
 }
-add_action( 'init', 'sidebars_init' );
+add_action( 'init', 'sb_sidebars_init' );
 
 
 /**
@@ -70,11 +70,11 @@ add_action( 'load-post-new.php', 'sb_sidebars_includes' );
  *
  * @since 2.5
  */
-function sb_sidebars_bar_init() {
+function sb_sidebars_admind_bar_init() {
 	global $wp_admin_bar;
     $wp_admin_bar->add_menu( array( 'id' => 'sb-sidebars', 'parent' => 'appearance', 'title' => __('Sidebars', 'startbox'), 'href' => admin_url( 'edit.php?post_type=sidebar' ) ) );
 }
-add_action( 'wp_before_admin_bar_render', 'sb_sidebars_bar_init' );
+add_action( 'wp_before_admin_bar_render', 'sb_sidebars_admind_bar_init' );
 
 
 /**

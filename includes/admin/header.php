@@ -66,10 +66,6 @@ class sb_header_settings extends sb_settings {
 		}
 	}
 
-	// Deprecated Functions
-	function nav_after() { _deprecated_function( __FUNCTION__, '2.4.9', 'primary_nav' ); }
-	function nav_before() { _deprecated_function( __FUNCTION__, '2.4.9', 'secondary_nav' ); }
-
 	function hooks() {
 		add_action( 'header', array( $this, 'logo') );
 		add_action( 'header', array( $this, 'tagline') );

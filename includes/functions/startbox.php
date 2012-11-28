@@ -63,10 +63,10 @@ class StartBox {
 		require_once( FUNCTIONS_PATH . '/conditionals.php' );	// Conditional Functions
 		require_once( FUNCTIONS_PATH . '/images.php' );			// Image Functions
 		require_once( FUNCTIONS_PATH . '/menus.php' );			// Menu Functions
-		require_once( FUNCTIONS_PATH . '/depricated.php' );		// Deprecated Functions
 		require_once( FUNCTIONS_PATH . '/hooks.php' );			// Hooks
 		require_once( FUNCTIONS_PATH . '/sidebars.php' );		// Sidebars
 		require_once( FUNCTIONS_PATH . '/comment_format.php' );	// Comment Structure
+		require_once( FUNCTIONS_PATH . '/depricated.php' );		// Deprecated Functions
 
 		// Register our scripts and styles
 		add_action( 'init', array( 'StartBox', 'register_scripts_and_styles' ), 1 );

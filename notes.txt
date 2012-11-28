@@ -1,8 +1,9 @@
 ##### 2.7
 	Theme customizer integration
 		review current options api setup, see if it can integrate with customizer
-		asses background theme option and helper function, delete if unhelpful
-		add custom CSS setting
+			switch SB Theme Options to look/work like standard WP settings pages
+			replace current Options API with more modular classes
+		add custom CSS setting for theme customizer
 
 ##### Future Release
 	? add import/export for theme settings
@@ -11,6 +12,7 @@
 	? strip out slideshows into stand-alone plugin
 	? strip out sidebar management into stand-alone plugin
 	? build better SB Hooks plugin
+
 
 ##### StartBox Core
 	Theme Options API (written, needs refactoring)
@@ -34,3 +36,6 @@
 	add_theme_support( 'sb-functions' );
 	add_theme_support( 'sb-updates' );
 	add_theme_support( 'sb-widgets' );
+
+
+

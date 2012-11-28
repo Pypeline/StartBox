@@ -19,7 +19,7 @@
  */
 // Example: map_action( 'sb_header', 'tha_header' );
 if ( ! function_exists( 'map_action' ) ) {
-function map_action( $action_to_map, $to_this_action, $priority, $accepted_args ) {
+function map_action( $action_to_map = '', $to_this_action = '', $priority = 10, $accepted_args = 1 ) {
 
 	return add_action_with_args( $to_this_action, 'do_action', $priority, $action_to_map );
 
