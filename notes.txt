@@ -10,14 +10,14 @@
 	? add image option for search widget submit button
 	? strip out shortcodes into stand-alone plugin
 	? strip out slideshows into stand-alone plugin
+	? strip out widgets into stand-alone plugin, and add a few others... "StartBox Enhanced Widgets"
 	? strip out sidebar management into stand-alone plugin
-	? build better SB Hooks plugin
+	? build better SB Easy Hooks plugin, add visual output guide
 
-
-##### StartBox Core
+##### StartBox Core (3.0)
 	Theme Options API (written, needs refactoring)
 	Theme Customizer Integration (pending refoctoring from theme options)
-	Metabox Creator (maybe, pending refactoring from theme options, might be best to leave this to a plugin)
+	Metabox Creator (maybe, pending refactoring from theme options, might be best to leave this to a plugin?)
 	Layout Management (done)
 	Sidebar Management (done)
 	Custom Template Tags and Conditionals (done)
@@ -36,6 +36,3 @@
 	add_theme_support( 'sb-functions' );
 	add_theme_support( 'sb-updates' );
 	add_theme_support( 'sb-widgets' );
-
-
-
