@@ -1,29 +1,22 @@
 ##### 2.7
-	Theme customizer integration
-		review current options api setup, see if it can integrate with customizer
-			switch SB Theme Options to look/work like standard WP settings pages
-			replace current Options API with more modular classes
+	Make responsive stylesheet
+	Simplify base CSS for navigation
+	Add import/export for theme settings
+	Eliminate dependence on Timthumb (https://gist.github.com/2853431)
+
+##### 3.0
+	Update to HTML5
+	Simplify Hook Names
+	Refactor Options API to use more modular classes
+	Integrate Theme Customizer (based on Options API)
 		add custom CSS setting for theme customizer
+	Add Metabox creator (based on Options API)
+	Move some core features to plugins:
+		Shortcodes (?)
+		Slideshows
+	Update the Theme Updater to make it universally friendly
 
-##### Future Release
-	? add import/export for theme settings
-	? add image option for search widget submit button
-	? strip out shortcodes into stand-alone plugin
-	? strip out slideshows into stand-alone plugin
-	? strip out widgets into stand-alone plugin, and add a few others... "StartBox Enhanced Widgets"
-	? strip out sidebar management into stand-alone plugin
-	? build better SB Easy Hooks plugin, add visual output guide
-
-##### StartBox Core (3.0)
-	Theme Options API (written, needs refactoring)
-	Theme Customizer Integration (pending refoctoring from theme options)
-	Metabox Creator (maybe, pending refactoring from theme options, might be best to leave this to a plugin?)
-	Layout Management (done)
-	Sidebar Management (done)
-	Custom Template Tags and Conditionals (done)
-	Automatic Updates (needs refactoring to be universally friendly)
-	Custom Widgets (done)
-
+##### StartBox Core (SBX)
 	// Add the power of StartBox to your theme!
 	require_once( get_template_directory() . '/startbox/startbox.php' );
 
